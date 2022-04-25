@@ -3,6 +3,9 @@
 # Update your system as fresh boi
 sudo dnf update --refresh -y
 
+# Enable dnf copr repo for neovim
+sudo dnf copr enable agriffis/neovim-nightly
+
 # Install packages from fedora repos and rpmfusion repos
 sed '{/^#/d};{/^$/d;}' packages.txt | xargs sudo dnf install -y
 
@@ -13,19 +16,18 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub org.telegram.desktop
 flatpak install flathub com.slack.Slack
 flatpak install flathub com.github.alexhuntley.Plots
-#flatpak install flathub com.discordapp.Discord
-#flatpak install flathub us.zoom.Zoom
-#flatpak install flathub com.microsoft.Teams
-#flatpak install flathub com.obsproject.Studio
+flatpak install flathub com.discordapp.Discord
+flatpak install flathub us.zoom.Zoom
+flatpak install flathub com.microsoft.Teams
+flatpak install flathub com.obsproject.Studio
 flatpak install flathub de.haeckerfelix.Fragments
 
 # ADB Setup for my device
 echo "+-----------------------------------------------------------+"
-echo "|             Connect your Phone to the system"             |"
+echo "|             Connect your Phone to the system              |"
 echo "+-----------------------------------------------------------+"
-echo "Did you insert the device? (y/N): "
-read response
-if [[ response == "y" || response == "Y" ]]
+read -p "Did you insert the device? (y/N): " response
+if [[ "$response" == "y" || "$response" == "Y" ]]
 then
 	ANDROID_ID=$(lsusb | grep Xiaomi | cut -d' ' -f6 | cut -d':' -f1)
 fi

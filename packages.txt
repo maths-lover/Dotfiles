@@ -1,5 +1,6 @@
 # Editor
 neovim
+python3-neovim
 
 # Common tools for all dev
 strace
@@ -47,3 +48,6 @@ starship
 
 # clipboard for wayland
 wl-clipboard
+
+# for chsh
+util-linux-user
