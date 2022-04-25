@@ -27,7 +27,7 @@ chmod u+x ./0_system_setup.sh
 ./0_system_setup.sh
 ```
 
-4. Run second script which installs packages (assumes flatpak is installed)
+4. Run second script which installs packages
 
 ```bash
 chmod u+x ./1_packages_setup.sh

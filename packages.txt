@@ -1,3 +1,6 @@
+# Flatpak for later use in installing of applications
+flatpak
+
 # Editor
 neovim
 python3-neovim
