@@ -1,0 +1,49 @@
+# Editor
+neovim
+
+# Common tools for all dev
+strace
+ltrace
+radare2
+
+# C/C++ Toolchain
+gcc
+clang
+clang-tools-extra
+valgrind
+gdb
+cmake
+make
+
+# Go Toolchain
+go
+
+# Java toolchain as my college forces me to learn this language
+java-17-openjdk-devel
+
+# Shell
+fish
+
+# nodejs for neovim
+nodejs
+
+# Backup and Recovery tool
+timeshift
+
+# Chrome dev as I use that (enable google-chrome rpmfusion repo)
+google-chrome-unstable
+
+# Android tools (adb, fastboot, etc.)
+android-tools
+
+# Downloading youtube videos and music
+yt-dlp
+
+# Colorful ls alternative
+exa
+
+# Beautiful shell config for fish
+starship
+
+# clipboard for wayland
+wl-clipboard
