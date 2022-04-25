@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DOTFILES_DIR=$(dirname $0)
+
 if [[ ! -f $HOME/ran_0_script ]]
 then
 
@@ -39,7 +41,11 @@ then
 	systemctl reboot
 fi
 
-sudo env SYSTEMD_EDITOR="cp $HOME/dev/misc/grub-btrfs/config" systemctl edit --full grub-btrfs.path
+sudo env SYSTEMD_EDITOR="cp $DOTFILES_DIR/grub-btrfs.path" systemctl edit --full grub-btrfs.path
+
+# before enabling grub-btrfs.path must run timeshift atleast once
+timeshift-launcher
+
 sudo systemctl enable --now grub-btrfs.path
 # Status of the service we just modified
 systemctl status grub-btrfs.path
