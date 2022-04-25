@@ -51,3 +51,6 @@ wl-clipboard
 
 # for chsh
 util-linux-user
+
+# Offline documentation browser
+zeal
