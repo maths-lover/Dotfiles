@@ -60,3 +60,9 @@ zeal
 
 # Dotfiles managing using symlinks
 stow
+
+#Gnome tweaks for getting some extra tweaks
+gnome-tweaks
+
+#Bat, a cat clone with extra wings
+bat
