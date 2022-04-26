@@ -30,11 +30,11 @@ read -p "Did you insert the device? (y/N): " response
 if [[ "$response" == "y" || "$response" == "Y" ]]
 then
 	ANDROID_ID=$(lsusb | grep Xiaomi | cut -d' ' -f6 | cut -d':' -f1)
+	echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"$ANDROID_ID\", MODE=\"0666\", GROUP=\"plugdev\"" | sudo tee -a /etc/udev/rules.d/51-android.rules
+	sudo chmod a+r /etc/udev/rules.d/51-android.rules
+	sudo udevadm control --reload-rules
 fi
 
-echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"$ANDROID_ID\", MODE=\"0666\", GROUP=\"plugdev\"" | sudo tee -a /etc/udev/rules.d/51-android.rules
-sudo chmod a+r /etc/udev/rules.d/51-android.rules
-sudo udevadm control --reload-rules
 
 # Changing default shell to fish
 chsh -s /bin/fish
