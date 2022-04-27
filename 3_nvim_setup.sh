@@ -4,5 +4,20 @@
 stow nvim
 
 # Symlink user config also
-DOTFILES_DIR=$(dirname $0)
-ln -rsv $DOTFILES_DIR/nvim_user_files $HOME/.config/nvim/lua/user
+DOTFILES_DIR=$(dirname "$0")
+pushd "$DOTFILES_DIR/nvim_user_files" || return
+git switch maths_lover
+popd || exit
+rm -fv "$HOME/.config/nvim/lua/user"
+ln -rsv "$DOTFILES_DIR/nvim_user_files" "$DOTFILES_DIR/nvim/.config/nvim/lua/user"
+
+# Give instructions
+printf "#####################################\n"
+printf "#                                   #\n"
+printf "#   Execute the following command   #\n"
+printf "#                                   #\n"
+printf "#####################################\n"
+printf "\n"
+printf "+--------------------------------------------------------------------------------+\n"
+printf "|    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'    |\n"
+printf "+--------------------------------------------------------------------------------+\n"
