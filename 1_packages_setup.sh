@@ -26,15 +26,44 @@ flatpak install flathub de.haeckerfelix.Fragments
 echo "+-----------------------------------------------------------+"
 echo "|             Connect your Phone to the system              |"
 echo "+-----------------------------------------------------------+"
-read -p "Did you insert the device? (y/N): " response
-if [[ "$response" == "y" || "$response" == "Y" ]]
-then
+read -rp "Did you insert the device? (y/N): " response
+if [[ "$response" == "y" || "$response" == "Y" ]]; then
 	ANDROID_ID=$(lsusb | grep Xiaomi | cut -d' ' -f6 | cut -d':' -f1)
 	echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"$ANDROID_ID\", MODE=\"0666\", GROUP=\"plugdev\"" | sudo tee -a /etc/udev/rules.d/51-android.rules
 	sudo chmod a+r /etc/udev/rules.d/51-android.rules
 	sudo udevadm control --reload-rules
 fi
 
-
 # Changing default shell to fish
 chsh -s /bin/fish
+
+# Installing extra packages
+get_latest_release() {
+	curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+		grep '"tag_name":' |                                             # Get tag line
+		sed -E 's/.*"([^"]+)".*/\1/'                                     # Pluck JSON value
+}
+# 1. Neovide
+mkdir -pv "$HOME/bin"
+pushd "$HOME/bin" || return
+wget "https://github.com/neovide/neovide/releases/download/0.8.0/neovide-linux.tar.gz.zip"
+unzip neovide-linux.tar.gz.zip
+tar -xf neovide-linux.tar.gz
+mv target/release/neovide ./
+rm -rf neovide-linux.tar.gz target
+chmod u+x ./neovide
+
+# 2. stylua
+wget "https://github.com/JohnnyMorganz/StyLua/releases/download/v0.13.1/stylua-linux.zip"
+unzip stylua-linux.zip
+rm stylua-linux.zip -f
+chmod u+x ./stylua
+popd || return
+
+# 3. cue_fmt
+go install cuelang.org/go/cmd/cue@latest
+
+# golangci_lint
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.45.2
+
+exit

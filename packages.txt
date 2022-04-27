@@ -66,3 +66,16 @@ gnome-tweaks
 
 #Bat, a cat clone with extra wings
 bat
+
+#Shell script analysis tool
+ShellCheck
+#The uncompromising code formatter
+black
+#Python utility / library to sort Python imports
+python3-isort
+#Shell formatter
+shfmt
+#Tool for static C/C++ code analysis
+cppcheck
+#Super-fast text searching tool (ag)
+the_silver_searcher

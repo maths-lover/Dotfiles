@@ -4,9 +4,13 @@
 
 if test -d $HOME/bin
 	fish_add_path -a $HOME/bin
-else if test -d $HOME/.local/bin
+end
+
+if test -d $HOME/.local/bin
 	fish_add_path -a $HOME/.local/bin
-else if test -d $HOME/dev/go/bin
+end
+
+if test -d $HOME/dev/go/bin
 	fish_add_path -a $HOME/dev/go/bin
 end
 

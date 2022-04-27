@@ -1,0 +1,7 @@
+[submodule "nvim/.config/nvim"]
+	path = nvim/.config/nvim
+	url = https://github.com/AstroNvim/AstroNvim
+[submodule "nvim_user_files"]
+	path = nvim_user_files
+	url = https://github.com/maths-lover/AstroNvim_user.git
+	ignore = dirty
