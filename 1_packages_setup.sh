@@ -18,9 +18,9 @@ flatpak install flathub com.slack.Slack
 flatpak install flathub com.github.alexhuntley.Plots
 flatpak install flathub com.discordapp.Discord
 flatpak install flathub us.zoom.Zoom
-flatpak install flathub com.microsoft.Teams
-flatpak install flathub com.obsproject.Studio
-flatpak install flathub de.haeckerfelix.Fragments
+#flatpak install flathub com.microsoft.Teams
+#flatpak install flathub com.obsproject.Studio
+#flatpak install flathub de.haeckerfelix.Fragments
 
 # ADB Setup for my device
 echo "+-----------------------------------------------------------+"
@@ -32,38 +32,44 @@ if [[ "$response" == "y" || "$response" == "Y" ]]; then
 	echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"$ANDROID_ID\", MODE=\"0666\", GROUP=\"plugdev\"" | sudo tee -a /etc/udev/rules.d/51-android.rules
 	sudo chmod a+r /etc/udev/rules.d/51-android.rules
 	sudo udevadm control --reload-rules
+else
+	echo "Proceeding without adding your device to 51-android.rules in udev rules..."
 fi
 
 # Changing default shell to fish
 chsh -s /bin/fish
 
-# Installing extra packages
-get_latest_release() {
-	curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
-		grep '"tag_name":' |                                             # Get tag line
-		sed -E 's/.*"([^"]+)".*/\1/'                                     # Pluck JSON value
-}
-# 1. Neovide
-mkdir -pv "$HOME/bin"
-pushd "$HOME/bin" || return
-wget "https://github.com/neovide/neovide/releases/download/0.8.0/neovide-linux.tar.gz.zip"
-unzip neovide-linux.tar.gz.zip
-tar -xf neovide-linux.tar.gz
-mv target/release/neovide ./
-rm -rf neovide-linux.tar.gz target
-chmod u+x ./neovide
+# 1. cue_fmt
+go install -v cuelang.org/go/cmd/cue@latest
 
-# 2. stylua
-wget "https://github.com/JohnnyMorganz/StyLua/releases/download/v0.13.1/stylua-linux.zip"
-unzip stylua-linux.zip
-rm stylua-linux.zip -f
-chmod u+x ./stylua
-popd || return
+# 2. golangci_lint
+go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@v1.45.2
 
-# 3. cue_fmt
-go install cuelang.org/go/cmd/cue@latest
+# 3. Go debugger delve (dlv is executable)
+go install -v github.com/go-delve/delve/cmd/dlv@latest
 
-# golangci_lint
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.45.2
+# 4. godoc the awesome doc for Go packages
+go install -v golang.org/x/tools/cmd/godoc@latest
 
-exit
+# 5. Setting up rust environment
+if [[ ! -d "$HOME/.cargo/bin" ]]; then
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
+# 6. Neovide
+mkdir -pv "$HOME/dev/rust"
+pushd "$HOME/dev/rust" || echo "Couldn't cd into $HOME/dev/rust" || return 1
+git clone "https://github.com/neovide/neovide"
+pushd neovide || echo "Couldn't cd into neovide" || return 1
+~/.cargo/bin/cargo build --release
+cp "./target/release/neovide" "$HOME/bin/" -v
+popd || printf "Exiting right after installing neovide\n" || return 1
+popd || printf "Exiting right after installing neovide\n" || return 1
+
+# 7. stylua
+~/.cargo/bin/cargo install stylua || printf "Couldn't install stylua" || return 1
+
+echo "Packages installation finished" || return 0
+
+# 8. GLava visualizer
+stow glava

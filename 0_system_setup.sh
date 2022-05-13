@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-DOTFILES_DIR=$(dirname $0)
+DOTFILES_DIR=$(dirname "$0")
 
-if [[ ! -f $HOME/ran_0_script ]]
-then
+if [[ ! -f $HOME/ran_0_script ]]; then
 
 	# Make your dnf fast as F**k boi
 	echo "max_parallel_downloads=10" | sudo tee -a /etc/dnf/dnf.conf
@@ -15,14 +14,14 @@ then
 	################################################
 	#        BEGIN actual grub-btrfs setup         #
 	################################################
-	mkdir -pv $HOME/dev/misc
+	mkdir -pv "$HOME/dev/misc"
 
 	# Just in case git is not installed install it
 	sudo dnf install git -y
 
 	# Grub-Btrfs Timeshift snapshot booting
-	git clone https://github.com/Antynea/grub-btrfs $HOME/dev/misc/grub-btrfs
-	cd $HOME/dev/misc/grub-btrfs
+	git clone https://github.com/Antynea/grub-btrfs "$HOME/dev/misc/grub-btrfs"
+	cd "$HOME/dev/misc/grub-btrfs" || return 1
 
 	# Configure it
 	sed -i 's/^#GRUB_BTRFS_GRUB_DIRNAME/GRUB_BTRFS_GRUB_DIRNAME/g' config
@@ -35,9 +34,9 @@ then
 	sudo dnf install timeshift
 
 	echo "+----------------------------------------------------------------+"
-	echo "|   Rebooting your system and you "must" run this script again   |"
+	echo "|   Rebooting your system and you \"must\" run this script again   |"
 	echo "+----------------------------------------------------------------+"
-	touch $HOME/ran_0_script
+	touch "$HOME/ran_0_script"
 	systemctl reboot
 fi
 
@@ -51,7 +50,7 @@ sudo systemctl enable --now grub-btrfs.path
 systemctl status grub-btrfs.path
 systemctl -t mount | grep run-timeshift-backup.mount
 echo "Sleeping for 15 seconds to allow you look into the output"
-rm $HOME/ran_0_script
+rm "$HOME/ran_0_script"
 sleep 15s
 
 # Fastening Fedora a bit

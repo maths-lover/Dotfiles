@@ -18,6 +18,8 @@ valgrind
 gdb
 cmake
 make
+meson
+ninja-build
 
 # Go Toolchain
 go
@@ -69,13 +71,51 @@ bat
 
 #Shell script analysis tool
 ShellCheck
+
 #The uncompromising code formatter
 black
+
 #Python utility / library to sort Python imports
 python3-isort
+
 #Shell formatter
 shfmt
+
 #Tool for static C/C++ code analysis
 cppcheck
+
 #Super-fast text searching tool (ag)
 the_silver_searcher
+
+#Portal frontend service to flatpak, will help in screensharing
+xdg-desktop-portal
+
+#Backend implementation for xdg-desktop-portal using GNOME
+xdg-desktop-portal
+
+#Chess game for GNOME
+pychess
+
+#Powerful open source chess engine
+stockfish
+
+#Modular and flexible ORM library for python
+python3-sqlalchemy
+
+#Chess Query Engine
+scoutfish
+
+#Chess database opening tree indexer
+chess_db
+
+#VsCodium
+codium
+
+#Font configuration and customization library
+fontconfig-devel
+
+#Development files for libxcb
+libxcb-devel
+#OpenGL audio spectrum audio visualizer
+glava#Manage GNOME Shell extensions
+gnome-extensions-app
