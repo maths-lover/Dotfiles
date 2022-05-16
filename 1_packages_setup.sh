@@ -18,9 +18,9 @@ flatpak install flathub com.slack.Slack
 flatpak install flathub com.github.alexhuntley.Plots
 flatpak install flathub com.discordapp.Discord
 flatpak install flathub us.zoom.Zoom
-#flatpak install flathub com.microsoft.Teams
-#flatpak install flathub com.obsproject.Studio
-#flatpak install flathub de.haeckerfelix.Fragments
+flatpak install flathub com.microsoft.Teams
+flatpak install flathub com.obsproject.Studio
+flatpak install flathub de.haeckerfelix.Fragments
 
 # ADB Setup for my device
 echo "+-----------------------------------------------------------+"

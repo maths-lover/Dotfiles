@@ -109,13 +109,16 @@ scoutfish
 chess_db
 
 #VsCodium
-codium
+#codium
 
 #Font configuration and customization library
 fontconfig-devel
 
 #Development files for libxcb
 libxcb-devel
+
 #OpenGL audio spectrum audio visualizer
-glava#Manage GNOME Shell extensions
+glava
+
+#Manage GNOME Shell extensions
 gnome-extensions-app
