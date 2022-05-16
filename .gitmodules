@@ -4,4 +4,5 @@
 	ignore = dirty
 [submodule "AstroNvim_user"]
 	path = AstroNvim_user
-	url = https://git.mehalter.com/mehalter/AstroNvim_user.git
+	url = git@github.com:maths-lover/AstroNvim_user.git
+	ignore = dirty
