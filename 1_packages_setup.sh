@@ -69,7 +69,10 @@ popd || printf "Exiting right after installing neovide\n" || return 1
 # 7. stylua
 ~/.cargo/bin/cargo install stylua || printf "Couldn't install stylua" || return 1
 
-echo "Packages installation finished" || return 0
-
 # 8. GLava visualizer
 stow glava
+
+# 9. Configure npm to use home local bin and not root
+npm config set prefix "$HOME/.local/"
+
+echo "Packages installation finished" || return 0

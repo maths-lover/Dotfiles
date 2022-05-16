@@ -11,7 +11,7 @@ Add the following options in your `/etc/fstab` to have better lifetime for your 
 1. Clone the repo
 
 ```bash
-git clone https://github.com/maths-lover/Dotfiles.git $HOME/Dotfiles
+git clone --recurse-submodules https://github.com/maths-lover/Dotfiles.git $HOME/Dotfiles
 ```
 
 2. `cd` into Dotfiles
