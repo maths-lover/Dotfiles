@@ -5,11 +5,11 @@ stow nvim
 
 # Symlink user config also
 DOTFILES_DIR=$(dirname "$0")
-pushd "$DOTFILES_DIR/nvim_user_files" || return
-git switch maths_lover
+pushd "$DOTFILES_DIR/AstroNvim_user" || return
+git switch maths-lover
 popd || exit
-rm -fv "$HOME/.config/nvim/lua/user"
-ln -rsv "$DOTFILES_DIR/nvim_user_files" "$DOTFILES_DIR/nvim/.config/nvim/lua/user"
+rm -rfv "$HOME/.config/nvim/lua/user"
+ln -rsv "$DOTFILES_DIR/AstroNvim_user" "$DOTFILES_DIR/nvim/.config/nvim/lua/user"
 
 # Give instructions
 printf "#####################################\n"

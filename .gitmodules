@@ -2,3 +2,6 @@
 	path = nvim/.config/nvim
 	url = https://github.com/AstroNvim/AstroNvim
 	ignore = dirty
+[submodule "AstroNvim_user"]
+	path = AstroNvim_user
+	url = https://git.mehalter.com/mehalter/AstroNvim_user.git
