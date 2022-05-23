@@ -62,6 +62,7 @@ pushd "$HOME/dev/rust" || echo "Couldn't cd into $HOME/dev/rust" || return 1
 git clone "https://github.com/neovide/neovide"
 pushd neovide || echo "Couldn't cd into neovide" || return 1
 ~/.cargo/bin/cargo build --release
+mkdir -pv "$HOME/bin"
 cp "./target/release/neovide" "$HOME/bin/" -v
 popd || printf "Exiting right after installing neovide\n" || return 1
 popd || printf "Exiting right after installing neovide\n" || return 1
