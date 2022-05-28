@@ -32,4 +32,5 @@ if status is-interactive
 	set VISUAL "neovide --multigrid"
 	starship init fish | source
 	set -g fish_key_bindings fish_hybrid_key_bindings
+	set GPG_TTY (tty)
 end
