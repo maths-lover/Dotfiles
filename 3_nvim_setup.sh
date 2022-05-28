@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
 
+# Symlink user config also
+DOTFILES_DIR=$(dirname "$0")
+
+mkdir -pv "$DOTFILES_DIR/nvim/.config/"
+pushd "$DOTFILES_DIR/nvim/.config/" || return
+git clone https://github.com/AstroNvim/AstroNvim.git
+popd || exit
+
 # Symlinking nvim setup
 stow nvim
 
-# Symlink user config also
-DOTFILES_DIR=$(dirname "$0")
+git clone https://github.com/maths-lover/Astronvim_user.git
 pushd "$DOTFILES_DIR/AstroNvim_user" || return
 git remote add mehalterUpstream https://git.mehalter.com/mehalter/AstroNvim_user.git
+git switch master
 git pull mehalterUpstream --rebase master
-git pull origin --rebase maths-lover
 git switch maths-lover
+git pull origin --rebase maths-lover
 popd || exit
 rm -rfv "$HOME/.config/nvim/lua/user"
 ln -rsv "$DOTFILES_DIR/AstroNvim_user" "$DOTFILES_DIR/nvim/.config/nvim/lua/user"
