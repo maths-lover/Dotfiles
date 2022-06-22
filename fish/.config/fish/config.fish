@@ -38,6 +38,10 @@ if test -d $HOME/dev/android/platform-tools
 	fish_add_path -a $HOME/dev/android/platform-tools
 end
 
+if test -d $HOME/dev/android/emulator
+	fish_add_path -a $HOME/dev/android/emulator
+end
+
 function fish_hybrid_key_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
 	for mode in default insert visual
 		fish_default_key_bindings -M $mode
