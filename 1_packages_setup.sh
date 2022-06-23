@@ -39,6 +39,11 @@ fi
 # Changing default shell to fish
 chsh -s /bin/fish
 
+# Make go directory
+mkdir -pv "$HOME/dev/go"
+export GOPATH="$HOME/dev/go"
+export GOBIN="$HOME/dev/go/bin"
+
 # 1. cue_fmt
 go install -v cuelang.org/go/cmd/cue@latest
 

@@ -11,13 +11,9 @@ if test -d $HOME/.local/bin
 end
 
 if test -d $HOME/dev/go/bin
+	set GOPATH $HOME/dev/go
+	set GOBIN $HOME/dev/go/bin
 	fish_add_path -a $HOME/dev/go/bin
-end
-
-if test -d $HOME/go
-	set GOPATH $HOME/go
-	set GOBIN $HOME/go/bin
-	fish_add_path -a $GOBIN
 end
 
 if test -d $HOME/.cargo/bin
