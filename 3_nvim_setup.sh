@@ -5,15 +5,15 @@ DOTFILES_DIR=$(dirname "$0")
 
 mkdir -pv "$DOTFILES_DIR/nvim/.config/"
 pushd "$DOTFILES_DIR/nvim/.config/" || return
-git clone https://github.com/AstroNvim/AstroNvim.git
+git clone https://github.com/AstroNvim/AstroNvim.git nvim
 popd || exit
 
 # Symlinking nvim setup
 stow nvim
 
-git clone https://github.com/maths-lover/Astronvim_user.git
+git clone https://github.com/maths-lover/AstroNvim_user.git
 pushd "$DOTFILES_DIR/AstroNvim_user" || return
-git remote add mehalterUpstream https://git.mehalter.com/mehalter/AstroNvim_user.git
+git remote add mehalterUpstream https://code.mehalter.com/AstroNvim_user.git
 git switch master
 git pull mehalterUpstream --rebase master
 git switch maths-lover
