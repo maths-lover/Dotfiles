@@ -14,6 +14,12 @@ if test -d $HOME/dev/go/bin
 	fish_add_path -a $HOME/dev/go/bin
 end
 
+if test -d $HOME/go
+	set GOPATH $HOME/go
+	set GOBIN $HOME/go/bin
+	fish_add_path -a $GOBIN
+end
+
 if test -d $HOME/.cargo/bin
 	fish_add_path -a $HOME/.cargo/bin
 end
