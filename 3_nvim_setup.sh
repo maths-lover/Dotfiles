@@ -16,9 +16,9 @@ pushd "$DOTFILES_DIR/AstroNvim_user" || return
 git remote add mehalterUpstream https://code.mehalter.com/AstroNvim_user
 git pull mehalterUpstream master
 git switch master
-git pull --rebase master
+git pull --rebase mehalterUpstream master
 git switch maths-lover
-git pull origin --rebase maths-lover
+git pull --rebase origin maths-lover
 popd || exit
 rm -rfv "$HOME/.config/nvim/lua/user"
 ln -rsv "$DOTFILES_DIR/AstroNvim_user" "$DOTFILES_DIR/nvim/.config/nvim/lua/user"
