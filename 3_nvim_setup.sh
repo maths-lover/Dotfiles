@@ -14,6 +14,7 @@ stow nvim
 git clone https://github.com/maths-lover/AstroNvim_user.git
 pushd "$DOTFILES_DIR/AstroNvim_user" || return
 git switch -C master
+git remote add mehalterUpstream https://code.mehalter.com/AstroNvim_user
 git remote set-url mehalterUpstream https://code.mehalter.com/AstroNvim_user
 git pull mehalterUpstream --rebase master
 git switch maths-lover
