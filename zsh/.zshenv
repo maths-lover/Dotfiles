@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# Set ZDOTDIR to ~/.config/zsh
+ZDOTDIR=${XDG_CONFIG_HOME:=~/.config}/zsh
