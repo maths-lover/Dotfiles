@@ -6,6 +6,7 @@
 
 local -a plugins=(
   marlonrichert/zsh-autocomplete    # Real-time type-ahead completion
+  #marlonrichert/zsh-edit            # Betted keyboard shortcuts
   marlonrichert/zsh-hist            # Edit history from the command line
   marlonrichert/zcolors             # Colors for completions and git
   zsh-users/zsh-autosuggestions     # Inline suggestions
@@ -19,14 +20,14 @@ zstyle ':autocomplete:*' default-context ''
 zstyle ':autocomplete:*' min-delay 0.05  # float
 # Wait this many seconds for typing to stop, before showing completions.
 
-zstyle ':autocomplete:*' min-input 0  # int
+zstyle ':autocomplete:*' min-input 2  # int
 # Wait until this many characters have been typed, before showing completions.
 
 zstyle ':autocomplete:*' ignored-input '' # extended glob pattern
 # '':     Always show completions.
 # '..##': Don't show completions when the input consists of two or more dots.
 
-zstyle ':autocomplete:*' list-lines 16  # int
+zstyle ':autocomplete:*' list-lines 12  # int
 # If there are fewer than this many lines below the prompt, move the prompt up
 # to make room for showing this many lines of completions (approximately).
 
@@ -97,6 +98,25 @@ bindkey '\0' list-expand
 bindkey -M menuselect '\r' accept-line
 # .accept-line: Accept command line.
 # accept-line:  Accept selection and exit menu.
+
+# vim bindings
+bindkey -v
+export KEYTIMEOUT=1
+
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# Change cursor shape according to vim mode selected
+function zle-keymap-select() {
+  case $KEYMAP in
+    vicmd) echo -ne '\e[1 q';;      #block
+    viins|main) echo -ne '\e[5 q';; # beam
+  esac
+}
+zle -N zle-keymap-select
 
 # `znap eval <name> '<command>'` is like `eval "$( <command> )"` but with
 # caching and compilation of <command>'s output, making it ~10 times faster.

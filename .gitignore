@@ -1,3 +1,8 @@
 user_old
 user_old/
 user_old/*
+zsh/.config/zsh/zsh_tools
+zsh/.config/zsh/zsh_tools/
+zsh/.config/zsh/zsh_tools/*
+zsh/.local/share/zsh/history
+zsh/.local/share/zsh/site-functions/_znap

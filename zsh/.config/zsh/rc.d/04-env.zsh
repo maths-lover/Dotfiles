@@ -12,6 +12,12 @@ export VISUAL=neovide
 export -U PATH path FPATH fpath MANPATH manpath
 export -UT INFOPATH infopath # -T creates tied pair
 
+# For citrix-workspace
+export ICAROOT=$HOME/dev/seagate/tools/citrix-workspace
+
+# thefuck
+eval $(thefuck --alias)
+
 # For GO
 export GOPATH=$HOME/dev/go
 export GOBIN=$HOME/dev/go/bin

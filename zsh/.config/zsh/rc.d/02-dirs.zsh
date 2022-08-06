@@ -20,3 +20,4 @@ hash -d devpy=$HOME/dev/python
 hash -d devjava=$HOME/dev/java
 hash -d devasm=$HOME/dev/asm
 hash -d bedios=$HOME/Videos
+hash -d devsea=$HOME/dev/seagate
