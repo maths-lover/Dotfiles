@@ -8,6 +8,9 @@
 export EDITOR=nvim
 export VISUAL=neovide
 
+# LESS variable
+export LESS="--use-color -FRX"
+
 # -U ensures only unique entries exist
 export -U PATH path FPATH fpath MANPATH manpath
 export -UT INFOPATH infopath # -T creates tied pair

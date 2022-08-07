@@ -109,6 +109,16 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
+# Live History search, newest to oldest
+bindkey "^R" history-incremental-search-backward
+# Live History search, oldest to newest
+bindkey "^S" history-incremental-search-forward
+
+bindkey -M vicmd "/" vi-history-search-backward
+bindkey -M vicmd "?" vi-history-search-forward
+bindkey -M vicmd "n" vi-repeat-search
+bindkey -M vicmd "N" vi-rev-repeat-search
+
 # Change cursor shape according to vim mode selected
 function zle-keymap-select() {
   case $KEYMAP in
