@@ -4,8 +4,10 @@
 # Main prompt #
 ###############
 
-znap eval starship 'starship init zsh --print-full-init'
-znap prompt
+# znap eval starship 'starship init zsh --print-full-init'
+# znap prompt
+# znap source romkatv/powerlevel10k
+
 
 setopt TRANSIENT_RPROMPT
 

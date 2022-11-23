@@ -48,4 +48,5 @@ fpath=(
   $ZDOTDIR/functions
   $fpath
   ~/.local/bin
+  ~/.local/share/zsh/site-functions
 )

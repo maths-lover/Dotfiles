@@ -36,7 +36,7 @@ alias -s gz='gzip -l'
 alias -s {log,out}='batcat -F'
 
 # Use bat as replacement for cat
-alias cat='batcat'
+alias cat='bat'
 alias ls='exa --icons'
 
 # Use `< file` to quickly view the contents of any file.
